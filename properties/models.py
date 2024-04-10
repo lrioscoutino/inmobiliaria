@@ -1,5 +1,9 @@
 from django.db import models
 from users.models import User
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
+
+fs = FileSystemStorage(location=settings.STATIC_ROOT)
 
 
 class Property(models.Model):
@@ -22,6 +26,6 @@ class Property(models.Model):
     wide = models.FloatField(default=0)
     long = models.FloatField(default=0)
     ranking = models.IntegerField(default=0)
-    image = models.ImageField(upload_to="images/", blank=True, null=True)
+    image = models.ImageField(upload_to="images/", blank=True, null=True, storage=fs)
     owner = models.ForeignKey(User, on_delete=models.PROTECT, related_name="property_user", blank=True, null=True)
 
