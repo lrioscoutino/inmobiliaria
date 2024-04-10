@@ -18,7 +18,7 @@ class Property(models.Model):
     city = models.CharField(max_length=100, blank=True, null=True)
     postal_code = models.CharField(max_length=6, blank=True, null=True)
     external_number = models.CharField(max_length=5, blank=True, null=True)
-    price = models.DecimalField(max_digits=8, decimal_places=4, default=0)
+    price = models.FloatField(blank=True, null=True)
     type = models.CharField(max_length=100, choices=TYPE_PROPERTY, blank=True, null=True)
     wide = models.FloatField(default=0)
     long = models.FloatField(default=0)
