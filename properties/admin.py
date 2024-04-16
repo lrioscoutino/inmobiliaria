@@ -6,6 +6,7 @@ from properties.models import Property, PropertyBuy
 class PropertyAdmin(admin.ModelAdmin):
     list_display = (
         "id",
+        "description",
         "street",
         "city",
         "owner",
