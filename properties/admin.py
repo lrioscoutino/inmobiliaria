@@ -1,5 +1,5 @@
 from django.contrib import admin
-from properties.models import Property
+from properties.models import Property, PropertyBuy
 # Register your models here.
 
 @admin.register(Property)
@@ -9,4 +9,13 @@ class PropertyAdmin(admin.ModelAdmin):
         "street",
         "city",
         "owner",
+    )
+
+
+@admin.register(PropertyBuy)
+class Propertybuyadmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "buyer",
+        "property"
     )

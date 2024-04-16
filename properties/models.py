@@ -2,13 +2,12 @@ from django.db import models
 from users.models import User
 
 
-
 class Property(models.Model):
     HOUSE = "house"
     DEPARTMENT = "deparment"
     LAND = "land"
     TYPE_PROPERTY = (
-        (HOUSE,  "Casa"),
+        (HOUSE, "Casa"),
         (DEPARTMENT, "Departamento"),
         (LAND, "Terreno"),
     )
@@ -24,5 +23,33 @@ class Property(models.Model):
     long = models.FloatField(default=0)
     ranking = models.IntegerField(default=0)
     image = models.ImageField(upload_to="images/", blank=True, null=True)
-    owner = models.ForeignKey(User, on_delete=models.PROTECT, related_name="property_user", blank=True, null=True)
+    owner = models.ForeignKey(
+        User,
+        on_delete=models.PROTECT,
+        related_name="property_user",
+        blank=True,
+        null=True
+    )
 
+    def __str__(self):
+        return self.description
+
+
+class PropertyBuy(models.Model):
+    buyer = models.ForeignKey(
+        User,
+        on_delete=models.PROTECT,
+        related_name="propertybuy_user",
+        blank=True,
+        null=True
+    )
+    property = models.ForeignKey(
+        Property,
+        on_delete=models.PROTECT,
+        related_name="propertybuy_user",
+        blank=True,
+        null=True
+    )
+
+    def __str__(self):
+        return self.property.description
