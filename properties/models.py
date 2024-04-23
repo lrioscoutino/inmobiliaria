@@ -39,13 +39,14 @@ class Property(models.Model):
     def __str__(self):
         return self.description
 
-    def save(self, *args, **kwargs):
-
-        if not self.make_thumbnail():
-            # set to a default thumbnail
-            raise Exception('Could not create thumbnail - is the file type valid?')
-
-        super(Property, self).save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #
+    #
+    #     if not self.make_thumbnail():
+    #         # set to a default thumbnail
+    #         raise Exception('Could not create thumbnail - is the file type valid?')
+    #
+    #     super(Property, self).save(*args, **kwargs)
 
     def make_thumbnail(self):
 

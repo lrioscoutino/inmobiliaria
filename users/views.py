@@ -4,7 +4,7 @@ from properties.models import Property
 
 
 def first_view(request):
-    properties = Property.objects.exclude(owner=request.user)
+    properties = Property.objects.all()
     context = {
         "properties": properties
     }

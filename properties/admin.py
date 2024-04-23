@@ -10,6 +10,7 @@ class PropertyAdmin(admin.ModelAdmin):
         "street",
         "city",
         "owner",
+        "thumbnail",
     )
 
 
